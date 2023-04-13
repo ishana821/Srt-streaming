@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
      * Use a [CameraRtmpLiveStreamer] For RTMP. Or a [CameraSrtLiveStreamer] for SRT.
      */
     private val streamer by lazy {
-        CameraRtmpLiveStreamer(
+        CameraSrtLiveStreamer(
             this,
             initialOnErrorListener = errorListener,
             initialOnConnectionListener = connectionListener
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
                         /**
                          * For SRT, use srt://my.server.url:9998?streamid=myStreamId&passphrase=myPassphrase
                          */
-                        streamer.startStream("rtmp://my.server.url:1234/app/streamKey")
+                        streamer.startStream("srt://127.0.0.1:4200?streamid=myStreamId&passphrase=myPassphrase")
                     } catch (e: Exception) {
                         binding.liveButton.isChecked = false
                         Log.e(TAG, "Failed to connect", e)
